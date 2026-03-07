@@ -165,6 +165,12 @@
       gap: 10px;
     }
 
+    .nav-logo-img {
+      height: 44px;
+      width: auto;
+      border-radius: 4px;
+    }
+
     .nav-logo-mark {
       width: 40px;
       height: 40px;
@@ -252,6 +258,27 @@
       background: var(--gradient-hero);
       overflow: hidden;
       padding: 120px 24px 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('ddm-hero-living.png') center center / cover no-repeat;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(26, 10, 46, 0.82) 0%, rgba(4, 57, 39, 0.75) 50%, rgba(26, 10, 46, 0.85) 100%);
+      z-index: 1;
+    }
+
+    .hero-logo {
+      width: 140px;
+      height: auto;
+      margin: 0 auto 32px;
+      border-radius: 8px;
     }
 
     .hero::before {
@@ -492,41 +519,37 @@
     }
 
     .about-image-wrapper {
-      background: var(--gradient-hero);
       border-radius: 16px;
-      padding: 48px;
-      position: relative;
       overflow: hidden;
-    }
-
-    .about-image-wrapper::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.15), transparent 60%);
-    }
-
-    .about-quote {
       position: relative;
-      z-index: 2;
-      text-align: center;
+      box-shadow: var(--shadow-strong);
     }
 
-    .about-quote blockquote {
+    .about-image-wrapper img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .about-image-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(26, 10, 46, 0.9) 0%, transparent 100%);
+      padding: 40px 32px 32px;
+    }
+
+    .about-image-overlay blockquote {
       font-family: 'Playfair Display', serif;
-      font-size: 24px;
+      font-size: 20px;
       font-style: italic;
       color: var(--white);
       line-height: 1.5;
-      margin-bottom: 20px;
+      margin-bottom: 8px;
     }
 
-    .about-quote cite {
+    .about-image-overlay cite {
       color: var(--gold);
-      font-size: 14px;
+      font-size: 13px;
       font-style: normal;
       font-weight: 600;
       letter-spacing: 1px;
@@ -578,11 +601,20 @@
     .service-card {
       background: var(--off-white);
       border-radius: 16px;
-      padding: 36px 28px;
       border: 1px solid var(--border);
       transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
+    }
+
+    .service-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .service-card-body {
+      padding: 28px 24px;
     }
 
     .service-card::before {
@@ -714,6 +746,47 @@
     .detail-card ul li::before {
       content: '◇ ';
       color: var(--gold);
+    }
+
+    /* Detail image showcase */
+    .detail-images {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .detail-img-card {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .detail-img-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .detail-img-card:hover img { transform: scale(1.05); }
+
+    .detail-img-card .detail-img-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(26, 10, 46, 0.85), transparent);
+      padding: 20px 16px 12px;
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .footer-logo-img {
+      height: 60px;
+      width: auto;
+      margin: 0 auto 16px;
+      border-radius: 4px;
     }
 
     /* ===== PRICING ===== */
@@ -1180,6 +1253,7 @@
       .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
       .process-steps::before { display: none; }
       .detail-grid { grid-template-columns: 1fr; }
+      .detail-images { grid-template-columns: 1fr 1fr; }
       .coverage-content { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
     }
@@ -1204,6 +1278,7 @@
       }
 
       .hero { padding: 100px 20px 60px; min-height: auto; }
+      .hero-logo { width: 100px; }
       .hero-stats { gap: 32px; }
       .hero-stat-number { font-size: 28px; }
 
@@ -1211,6 +1286,7 @@
       .process-steps { grid-template-columns: 1fr; }
       .extras-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
+      .detail-images { grid-template-columns: 1fr; }
 
       .about-stat-bar {
         position: relative;
@@ -1239,7 +1315,7 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <div class="nav-logo-mark">D</div>
+      <img src="ddm-logo.png" alt="DDM Cleaning Solutions" class="nav-logo-img" />
       <div class="nav-logo-text">DDM <span>Cleaning</span></div>
     </a>
     <ul class="nav-links" id="navLinks">
@@ -1257,7 +1333,10 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
+    <img src="ddm-logo.png" alt="DDM Cleaning Solutions Logo" class="hero-logo" />
     <div class="hero-badge">Perth's Trusted Property Cleaning Specialists</div>
     <h1 class="heading-xl">Immaculate Properties.<br><em>Every Time.</em></h1>
     <p class="hero-sub">Premium vacate, pre-sale, and property cleaning solutions for real estate agents, property managers, and homeowners across Perth.</p>
@@ -1323,7 +1402,8 @@
       </div>
       <div class="about-image-block reveal">
         <div class="about-image-wrapper">
-          <div class="about-quote">
+          <img src="ddm-presale-home.png" alt="Luxury Perth home prepared for sale by DDM Cleaning Solutions" />
+          <div class="about-image-overlay">
             <blockquote>"We don't just clean properties — we prepare them to impress."</blockquote>
             <cite>DDM Cleaning Solutions</cite>
           </div>
@@ -1356,7 +1436,8 @@
 
     <div class="services-grid">
       <div class="service-card reveal">
-        <div class="service-icon">🏠</div>
+        <img src="ddm-vacate-apartment.png" alt="Empty apartment after vacate cleaning" class="service-card-img" />
+        <div class="service-card-body">
         <h3>Vacate Cleaning</h3>
         <p>Complete end-of-lease cleaning to bond-back standard. Every room deep cleaned to pass the strictest property inspections.</p>
         <ul class="service-includes">
@@ -1365,10 +1446,12 @@
           <li>All tracks, vents &amp; light switches</li>
           <li>Skirting boards &amp; door frames</li>
         </ul>
+        </div>
       </div>
 
       <div class="service-card reveal">
-        <div class="service-icon">💎</div>
+        <img src="ddm-presale-home.png" alt="Luxury home prepared for pre-sale" class="service-card-img" />
+        <div class="service-card-body">
         <h3>Pre-Sale Preparation</h3>
         <p>Our signature service. Transform any property into a buyer-ready showpiece with comprehensive internal and external cleaning.</p>
         <ul class="service-includes">
@@ -1377,10 +1460,12 @@
           <li>Pressure cleaning externals</li>
           <li>Garden tidying &amp; presentation</li>
         </ul>
+        </div>
       </div>
 
       <div class="service-card reveal">
-        <div class="service-icon">🏢</div>
+        <img src="ddm-bedroom-master.png" alt="Immaculate master bedroom" class="service-card-img" />
+        <div class="service-card-body">
         <h3>Property Management</h3>
         <p>Ongoing cleaning solutions for property managers. Reliable scheduling, photo documentation, and consistent results across your portfolio.</p>
         <ul class="service-includes">
@@ -1389,10 +1474,12 @@
           <li>Photo reporting on completion</li>
           <li>Priority scheduling available</li>
         </ul>
+        </div>
       </div>
 
       <div class="service-card reveal">
-        <div class="service-icon">🪟</div>
+        <img src="ddm-kitchen-detail.png" alt="Spotless modern kitchen" class="service-card-img" />
+        <div class="service-card-body">
         <h3>External Services</h3>
         <p>Complete exterior property cleaning to complement our internal services. Ideal for pre-sale and prestige properties.</p>
         <ul class="service-includes">
@@ -1401,10 +1488,12 @@
           <li>Cobweb removal</li>
           <li>Verandas, porches &amp; walkways</li>
         </ul>
+        </div>
       </div>
 
       <div class="service-card reveal">
-        <div class="service-icon">⚡</div>
+        <img src="ddm-bathroom-pristine.png" alt="Pristine bathroom" class="service-card-img" />
+        <div class="service-card-body">
         <h3>Specialist Deep Clean</h3>
         <p>Heavy-duty cleaning for properties that need extra attention. Mould, nicotine, fumes — we handle the jobs others won't.</p>
         <ul class="service-includes">
@@ -1413,10 +1502,12 @@
           <li>Wall &amp; ceiling deep clean</li>
           <li>Grout restoration</li>
         </ul>
+        </div>
       </div>
 
       <div class="service-card reveal">
-        <div class="service-icon">🏡</div>
+        <img src="ddm-hero-living.png" alt="Luxury living room" class="service-card-img" />
+        <div class="service-card-body">
         <h3>Prestige Properties</h3>
         <p>Bespoke cleaning packages for luxury homes, mansions, and furnished properties. White-glove service for high-value assets.</p>
         <ul class="service-includes">
@@ -1425,6 +1516,7 @@
           <li>Skylight &amp; blind cleaning</li>
           <li>Custom scope packages</li>
         </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -1436,6 +1528,22 @@
     <div class="section-label reveal">The DDM Standard</div>
     <h2 class="heading-lg section-title reveal">What a Complete Clean Includes</h2>
     <p class="section-sub reveal">Every room receives meticulous attention. Here's exactly what we deliver.</p>
+
+    <!-- Image showcase row -->
+    <div class="detail-images reveal">
+      <div class="detail-img-card">
+        <img src="ddm-kitchen-detail.png" alt="Kitchen deep cleaning" />
+        <div class="detail-img-label">Kitchen</div>
+      </div>
+      <div class="detail-img-card">
+        <img src="ddm-bathroom-pristine.png" alt="Bathroom deep cleaning" />
+        <div class="detail-img-label">Bathroom</div>
+      </div>
+      <div class="detail-img-card">
+        <img src="ddm-bedroom-master.png" alt="Bedroom deep cleaning" />
+        <div class="detail-img-label">Bedrooms</div>
+      </div>
+    </div>
 
     <div class="detail-grid">
       <div class="detail-card reveal">
@@ -1646,7 +1754,7 @@
           <div class="contact-detail-icon">✉️</div>
           <div class="contact-detail-text">
             <span>Email</span>
-            <a href="mailto:ddmcleaning.perth@gmail.com" style="font-weight: 600;">ddmcleaning.perth@gmail.com</a>
+            <a href="/cdn-cgi/l/email-protection#c6a2a2aba5aaa3a7a8afa8a1e8b6a3b4b2ae86a1aba7afaae8a5a9ab" style="font-weight: 600;"><span class="__cf_email__" data-cfemail="d8bcbcb5bbb4bdb9b6b1b6bff6a8bdaaacb098bfb5b9b1b4f6bbb7b5">[email&#160;protected]</span></a>
           </div>
         </div>
         <div class="contact-detail">
@@ -1737,7 +1845,7 @@
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <div class="footer-logo">DDM <span>Cleaning Solutions</span></div>
+  <img src="ddm-logo.png" alt="DDM Cleaning Solutions" class="footer-logo-img" />
   <div class="footer-tagline">Premium Property Cleaning — Perth, Western Australia</div>
   <div class="footer-links">
     <a href="#about">About</a>
@@ -1751,7 +1859,7 @@
 </footer>
 
 <!-- ===== JAVASCRIPT ===== -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Scroll-triggered reveal animations
   const revealElements = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {
@@ -1792,15 +1900,4 @@
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        const offset = 80;
-        const position = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: position, behavior: 'smooth' });
-      }
-    });
-  });
-</script>
-
-</body>
-</html>
+      const target = document.querySelector(this.getAttribut
